@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>To'y taklifnomasi</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f8f4ef;
+    color: #4d4037;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+section {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+/* -------------------- COVER -------------------- */
+
+.cover {
+    background:
+        linear-gradient(rgba(62,45,35,.35), rgba(62,45,35,.35)),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85")
+        center/cover no-repeat;
+
+    color: white;
+    text-align: center;
+}
+
+.cover-content {
+    animation: fadeIn 2s ease;
+}
+
+.small-title {
+    font-size: 14px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(55px, 13vw, 105px);
+    font-weight: 500;
+    line-height: .9;
+}
+
+.cover h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 35px;
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+.cover p {
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.open-btn {
+    margin-top: 45px;
+    padding: 15px 35px;
+    border: 1px solid rgba(255,255,255,.8);
+    background: rgba(255,255,255,.15);
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: .3s;
+}
+
+.open-btn:hover {
+    background: white;
+    color: #5c483b;
+}
+
+/* -------------------- GENERAL -------------------- */
+
+.container {
+    width: min(900px, 100%);
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #9a806c;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(45px, 10vw, 75px);
+    font-weight: 500;
+}
+
+.decor {
+    width: 80px;
+    height: 1px;
+    background: #b59a83;
+    margin: 25px auto;
+}
+
+/* -------------------- NAMES -------------------- */
+
+.names {
+    background: #f8f4ef;
+}
+
+.names .big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(55px, 12vw, 100px);
+    line-height: .9;
+}
+
+.names .and {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 35px;
+    margin: 18px 0;
+    color: #aa8c74;
+}
+
+.quote {
+    max-width: 600px;
+    margin: 35px auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    font-style: italic;
+}
+
+/* -------------------- DATE -------------------- */
+
+.date-section {
+    background: #eee5dc;
+}
+
+.date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    margin-bottom: 35px;
+}
+
+.calendar {
+    width: min(500px, 100%);
+    margin: auto;
+}
+
+.calendar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-grid div {
+    padding: 10px 4px;
+    font-size: 13px;
+}
+
+.week {
+    font-weight: 600;
+    color: #9a806c;
+}
+
+.selected {
+    width: 38px;
+    height: 38px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #856b58;
+    color: white;
+}
+
+/* -------------------- COUNTDOWN -------------------- */
+
+.countdown-section {
+    background:
+        linear-gradient(rgba(50,38,30,.6), rgba(50,38,30,.6)),
+        url("https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1600&q=85")
+        center/cover fixed;
+    color: white;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 650px;
+    width: 100%;
+    margin-top: 35px;
+}
+
+.time-box {
+    padding: 20px 10px;
+    border: 1px solid rgba(255,255,255,.5);
+    backdrop-filter: blur(4px);
+}
+
+.time-box span {
+    display: block;
+}
+
+.number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 45px;
+}
+
+.label {
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* -------------------- LOCATION -------------------- */
+
+.location {
+    background: #f8f4ef;
+}
+
+.location-card {
+    margin-top: 35px;
+    padding: 45px 25px;
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid #d5c5b6;
+}
+
+.location-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+}
+
+.location-card p {
+    margin-top: 12px;
+    color: #76675d;
+}
+
+.map-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 13px 30px;
+    border: 1px solid #856b58;
+    color: #856b58;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.map-btn:hover {
+    background: #856b58;
+    color: white;
+}
+
+/* -------------------- INVITATION -------------------- */
+
+.invitation {
+    background: #eee5dc;
+}
+
+.invitation-text {
+    max-width: 650px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+/* -------------------- WISHES -------------------- */
+
+.wishes {
+    background: #f8f4ef;
+}
+
+.wish-form {
+    width: min(550px, 100%);
+    margin-top: 30px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #d5c5b6;
+    background: transparent;
+    font-family: inherit;
+    outline: none;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+.submit {
+    padding: 14px 35px;
+    border: none;
+    background: #856b58;
+    color: white;
+    cursor: pointer;
+}
+
+/* -------------------- FOOTER -------------------- */
+
+footer {
+    padding: 30px;
+    background: #4e4035;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* -------------------- ANIMATION -------------------- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -------------------- MOBILE -------------------- */
+
+@media(max-width:600px) {
+
+    section {
+        padding: 50px 18px;
+    }
+
+    .countdown {
+        gap: 8px;
+    }
+
+    .time-box {
+        padding: 15px 5px;
+    }
+
+    .number {
+        font-size: 32px;
+    }
+
+    .label {
+        font-size: 8px;
+    }
+
+    .calendar-grid {
+        gap: 2px;
+    }
+
+    .calendar-grid div {
+        padding: 7px 2px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- COVER -->
+
+<section class="cover" id="cover">
+
+    <div class="cover-content">
+
+        <div class="small-title">
+            ASSALOMU ALAYKUM
+        </div>
+
+        <h1>Taklifnoma</h1>
+
+        <h2>To'yimizga tashrif buyurishingizni so'raymiz</h2>
+
+        <p>PASTGA SURING</p>
+
+        <button class="open-btn"
+                onclick="document.getElementById('names').scrollIntoView()">
+            TAKLIFNOMANI OCHISH
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- NAMES -->
+
+<section class="names" id="names">
+
+    <div class="container reveal">
+
+        <div class="subtitle">
+            NIKOH TO'YI TANTANASI
+        </div>
+
+        <div class="big">
+            Ziyodillo
+        </div>
+
+        <div class="and">
+            &
+        </div>
+
+        <div class="big">
+            Osha qiz
+        </div>
+
+        <div class="decor"></div>
+
+        <div class="quote">
+            "Ikki qalbning birikishi — eng buyuk baxt"
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DATE -->
+
+<section class="date-section">
+
+    <div class="container reveal">
+
+        <div class="subtitle">
+            TO'Y SANASI
+        </div>
+
+        <div class="date">
+            3-oktabr, Shanba
+        </div>
+
+        <div class="calendar">
+
+            <div class="calendar-title">
+                Oktabr 2026
+            </div>
+
+            <div class="calendar-grid">
+
+                <div class="week">Du</div>
+                <div class="week">Se</div>
+                <div class="week">Ch</div>
+                <div class="week">Pa</div>
+                <div class="week">Ju</div>
+                <div class="week">Sh</div>
+                <div class="week">Ya</div>
+
+                <div></div>
+                <div></div>
+                <div></div>
+                <div>1</div>
+                <div>2</div>
+                <div><div class="selected">3</div></div>
+                <div>4</div>
+
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div>10</div>
+                <div>11</div>
+
+                <div>12</div>
+                <div>13</div>
+                <div>14</div>
+                <div>15</div>
+                <div>16</div>
+                <div>17</div>
+                <div>18</div>
+
+                <div>19</div>
+                <div>20</div>
+                <div>21</div>
+                <div>22</div>
+                <div>23</div>
+                <div>24</div>
+                <div>25</div>
+
+                <div>26</div>
+                <div>27</div>
+                <div>28</div>
+                <div>29</div>
+                <div>30</div>
+                <div>31</div>
+                <div></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="countdown-section">
+
+    <div class="container">
+
+        <div class="subtitle" style="color:white">
+            TO'YGA QADAR
+        </div>
+
+        <div class="title">
+            Sizni kutamiz
+        </div>
+
+        <div class="countdown">
+
+            <div class="time-box">
+                <span class="number" id="days">00</span>
+                <span class="label">KUN</span>
+            </div>
+
+            <div class="time-box">
+                <span class="number" id="hours">00</span>
+                <span class="label">SOAT</span>
+            </div>
+
+            <div class="time-box">
+                <span class="number" id="minutes">00</span>
+                <span class="label">DAQIQA</span>
+            </div>
+
+            <div class="time-box">
+                <span class="number" id="seconds">00</span>
+                <span class="label">SONIYA</span>
+            </div>
+
+        </div>
+
+        <p style="margin-top:30px">
+            18:00 — Boshlanish vaqti
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LOCATION -->
+
+<section class="location">
+
+    <div class="container reveal">
+
+        <div class="subtitle">
+            TANTANALI MAROSIM
+        </div>
+
+        <div class="title">
+            To'y manzili
+        </div>
+
+        <div class="location-card">
+
+            <h3>
+                Yoshlar bazimgohi
+            </h3>
+
+            <p>
+                Mitan tumani
+            </p>
+
+            <a class="map-btn"
+               href="https://maps.google.com"
+               target="_blank">
+                XARITADA KO'RISH
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INVITATION -->
+
+<section class="invitation">
+
+    <div class="container reveal">
+
+        <div class="subtitle">
+            SAMIMIY TAKLIF
+        </div>
+
+        <div class="title">
+            Hurmat bilan
+        </div>
+
+        <div class="decor"></div>
+
+        <div class="invitation-text">
+
+            Dilshodbek & Anorabonu
+
+            <br><br>
+
+            Ushbu to'yga tashrif buyurishingiz
+            biz uchun katta sharafdir.
+            Sizning huzuringiz bu kechaning
+            eng qimmatli sovg'asidir.
+
+            <br><br>
+
+            Kelishingiz bizga ulkan quvonch bag'ishlaydi.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WISHES -->
+
+<section class="wishes">
+
+    <div class="container reveal">
+
+        <div class="subtitle">
+            SAMIMIY TILAKLAR
+        </div>
+
+        <div class="title">
+            Tilak qoldiring
+        </div>
+
+        <p style="margin-top:15px">
+            Bizga iliq tilaklaringizni yozib qoldiring
+        </p>
+
+        <form class="wish-form"
+              onsubmit="sendWish(event)">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Ismingiz"
+                required>
+
+            <textarea
+                id="message"
+                placeholder="Tilagingiz..."
+                required></textarea>
+
+            <button class="submit">
+                TILAK QOLDIRISH
+            </button>
+
+        </form>
+
+        <p id="success"
+           style="margin-top:20px;display:none">
+            Rahmat! Tilagingiz qabul qilindi.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    Z ♡ O
+
+    <br><br>
+
+    Bu taklifnoma siz uchun maxsus
+
+</footer>
+
+
+<script>
+
+/* ==============================
+   TO'Y SANASI
+   ============================== */
+
+const weddingDate =
+    new Date("October 3, 2026 18:00:00").getTime();
+
+
+function updateCountdown() {
+
+    const now = new Date().getTime();
+
+    const difference = weddingDate - now;
+
+    if (difference <= 0) {
+
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+
+        return;
+    }
+
+    const days =
+        Math.floor(difference / (1000 * 60 * 60 * 24));
+
+    const hours =
+        Math.floor(
+            (difference % (1000 * 60 * 60 * 24))
+            / (1000 * 60 * 60)
+        );
+
+    const minutes =
+        Math.floor(
+            (difference % (1000 * 60 * 60))
+            / (1000 * 60)
+        );
+
+    const seconds =
+        Math.floor(
+            (difference % (1000 * 60))
+            / 1000
+        );
+
+    document.getElementById("days").innerText =
+        String(days).padStart(2, "0");
+
+    document.getElementById("hours").innerText =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").innerText =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").innerText =
+        String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+
+/* ==============================
+   ANIMATIONS
+   ============================== */
+
+const reveals =
+    document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+
+    reveals.forEach(element => {
+
+        const windowHeight =
+            window.innerHeight;
+
+        const elementTop =
+            element.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+
+            element.classList.add("active");
+
+        }
+
+    });
+
+}
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll
+);
+
+revealOnScroll();
+
+
+/* ==============================
+   WISH FORM
+   ============================== */
+
+function sendWish(event) {
+
+    event.preventDefault();
+
+    document.getElementById("success").style.display =
+        "block";
+
+    document.getElementById("name").value = "";
+
+    document.getElementById("message").value = "";
+
+}
+
+</script>
+
+</body>
+</html>
